@@ -1,0 +1,59 @@
+{% extends 'student/studentheader.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'student.css' %}">
+<h1>StudentBookView</h1>
+<div class="container-lg" style="padding-left: 0px">  
+  <form action="{% url 'StudentBookSearch' %}" method="get" class="form-inline justify-content-center">
+    <input class="form-control me-2" type="text" name="items" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" style="padding-left: -50px" type="submit">Search</button>
+  </form>  
+    <table class="table table-hover table-dark">
+       <thead>
+            <tr>
+            <th>SrNo</th>
+            <th>Book Title</th>
+            <th>Isbn</th>
+            <th>Book Author</th>
+            <th>Book Publisher</th>
+            <th>Book Quantity</th>
+            <th>Book Category</th>
+            <th>Book Created_At</th>
+            </tr>
+       </thead>
+    
+       <tbody>
+          {% for addbook in books %}
+            <tr>
+                <td>{{forloop.counter}}.</td>
+                <td>{{ addbook.book_title }}</td>
+                <td>{{ addbook.isbn }}</td>
+                <td>{{ addbook.book_author }}</td>
+                <td>{{ addbook.book_publisher }}</td>
+                <td>{{ addbook.book_quantity }}</td>
+                <td>{{ addbook.book_category }}</td>
+                <td>{{ addbook.created_at }}</td>
+            </tr>
+          {% endfor %} 
+      </tbody>
+    </table>
+
+</br>
+</br>
+<nav aria-label="Page navigation example">
+ <ul class="pagination justify-content-center">
+{% if books.has_previous %}
+   <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
+   <li class="page-item"><a class="page-link" href="?page{{ books.previous_page_number }}">Previous</a></li>
+{% endif %}
+
+{% for i in nums %}
+  <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}"> {{ forloop.counter }}</a></li>
+{% endfor %}
+{% if books.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ books.next_page_number }}">Next</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ books.paginator.num_pages }}">Last &raquo</a></li>
+{% endif %}
+</ul>
+</nav>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'admin/header.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+<h1>Search Results</h1>
+{% if items %}
+            <table class="table table-hover table-dark">
+                <thead>
+                <tr>       
+                    <th scope="col">Sr.no</th>
+                    <th scope="col">Student Name </th>
+                    <th scope="col">Enrollment</th>
+                    <th scope="col">Book_title</th>
+                    <th scope="col">Issued Date</th>
+                    <th scope="col">Return Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in  items %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.studentprofile.user.username}}</td>
+                        <td>{{i.studentprofile.enrollment}}</td>
+                        <td>{{i.book.book_title}}</td>
+                        <td>{{i.issue_date}}</td>
+                        <td>{{i.expire_date}}</td>
+                        <td><a href="{% url 'ReturnBook' i.id %}" class="btn btn-secondary">Return</a>
+                            &nbsp;&nbsp;
+                            <a href="{% url 'AdminFine' i.id %}" class="btn btn-primary">Fine</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        {% else %}
+            <h4>No Details Available...</h4>
+        {% endif %}
+{% endblock %}

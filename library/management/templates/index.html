@@ -1,0 +1,17 @@
+{% extends 'homeheader.html'%}
+{% load static%}
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+<hr>
+<div class="flex-container">
+    <div class="card">
+        <img src="{%static 'image/admin.png'%}" alt="" height="200" width="200">
+        <a href="{% url 'login' %}"  class="btn btn-info">Admin</a>
+    </div>
+    <div class="card">
+        <img src="{%static 'image/student.png'%}" alt="" height="200" width="200">
+        <a href="{% url 'StudentLogin' %}" class="btn btn-info ">Student</a>
+    </div>
+</div>
+<hr>
+{% endblock %}

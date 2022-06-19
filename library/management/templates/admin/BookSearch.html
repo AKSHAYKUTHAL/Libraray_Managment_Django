@@ -1,0 +1,41 @@
+{% extends 'admin/header.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+
+<h1> Search Results </h1>
+   <div class="row justify-content-center m-4">
+   {% if books %}
+      {% for addbook in books %}  
+
+    <div class="col-md-4">
+        <div class="card m-3 p-2" style="width: 18rem; height: 50rem; box-shadow: 4px 4px #c291fa; border-radius: 25px 15px;">
+          <center>
+            <img src="{{ addbook.book_cover.url }}" style="height: 200px; width: 200px;"  class="card-img-top" alt="...">
+          </cenetr>
+          <div class="card-block px-2">
+                 <label>Book Title*</label>
+                <h4 style="font-size: 17px;" class="card-title mt-1">{{ addbook.book_title }}</h4>
+                <label>Isbn*</label>
+                <h4 style="font-size: 17px;" class="card-title mt-1">{{ addbook.isbn }}</h4>
+                <label>Book Author*</label>
+                <h4 style="color: rgb(16, 52, 107)" class="card-subtitle mt-1">{{addbook.book_author }}</h4>
+                <label>Book Publisher*</label>
+                <h4 style="color: rgb(16, 52, 107)" class="card-subtitle mt-1">{{addbook.book_publisher }}</h4>
+                <label>Book Quantity*</label>
+                <h4 style="color: rgb(16, 52, 107)" class="card-subtitle mt-1">{{addbook.book_quantity }}</h4>
+                <hr>
+                <p style="font-size: 13px;" class="btn btn-warning"><b>{{ addbook.book_category }}</b></p>
+                <p style="font-size: 13px;" class="cart-text mt-1">{{ addbook.created_at }}</p>                
+            </div>
+            <span><a href="{% url 'Detail' addbook.pk  %}" style="background-color: #5707b3;" class="btn btn-primary m-1">Detail</a></span>
+        </div>
+    </div>
+  {% endfor %}
+
+  {% else %}
+     <p> Searched books are not available...</p>
+  {% endif %}
+
+   </div>
+{% endblock %}

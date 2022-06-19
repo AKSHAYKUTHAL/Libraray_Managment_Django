@@ -1,0 +1,30 @@
+{% extends 'admin/header.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+<h1>Search Results</h1>
+{% if items %}
+            <table class="table table-hover table-dark">
+                <thead>
+                <tr>
+        
+                    <th scope="col">Student Name </th>
+                    <th scope="col">Enrollment</th>
+                    <th scope="col">branch</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for stud in  items %}
+                    <tr>
+                        <td>{{ stud.user }}</td>
+                        <td>{{ stud.enrollment }}</td>
+                        <td>{{ stud.branch }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        {% else %}
+            <h4>No Details Available...</h4>
+        {% endif %}
+{% endblock %}

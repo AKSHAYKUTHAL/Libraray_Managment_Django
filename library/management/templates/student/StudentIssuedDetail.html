@@ -1,0 +1,51 @@
+{% extends 'student/studentheader.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'student.css' %}">
+<h1>StudentIssuedBookDetail</h1>
+<div class="container-lg" style="padding-left: 0px">
+        <table class="table table-hover table-dark">
+           <thead>
+               <tr>
+                 <th>Sr No</th>
+                 <th>Student</th>
+                 <th>Enrollment</th>
+                 <th>Book Title</th>
+                 <th>Issue Date</th>
+                 <th>Expire Date</th>
+                 <th>Action</th>
+               </tr>
+           </thead>
+           <tbody>
+        {% for i in  data3 %}
+           <tr>
+             <td>{{forloop.counter}}.</td>
+             <td>{{i.studentprofile.user.username}}</td>
+             <td>{{i.studentprofile.enrollment}}</td>
+             <td>{{i.book.book_title}}</td>
+             <td>{{i.issue_date}}</td>
+             <td>{{i.expire_date}}</td>
+             <td><a href="{% url 'StudentFine' i.id %}" class="btn btn-primary">See Fine</a></td>
+           </tr>
+       {% endfor %}
+          </tbody>         
+          </table>
+ </div>
+ <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+ {% if data3.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
+    <li class="page-item"><a class="page-link" href="?page{{ data3.previous_page_number }}">Previous</a></li>
+ {% endif %}
+ 
+ {% for i in nums %}
+   <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}"> {{ forloop.counter }}</a></li>
+ {% endfor %}
+ 
+ {% if data3.has_next %}
+     <li class="page-item"><a class="page-link" href="?page={{ data3.next_page_number }}">Next</a></li>
+     <li class="page-item"><a class="page-link" href="?page={{ data3.paginator.num_pages }}">Last &raquo</a></li>
+ {% endif %}
+ </ul>
+ </nav>
+{% endblock %}

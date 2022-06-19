@@ -1,0 +1,39 @@
+{% extends 'admin/header.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+   <div class="container">
+           <div class="col-sm">
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+          </div>
+       <div class="row justify-content-center">
+         <div class="col-md-5">
+              <div class= "card mb-3">
+                  <div class="card-body">
+                       <div class="row">
+                            <div class ="col">
+                                 <center>
+                                    <img class="rounded-circle account-img" src="{% static 'image/addbook.png' %}" width="100" height="150">
+                                  </center>
+                            </div>
+                        </div>
+                            <form method="POST" enctype="multipart/form-data">
+                                   {% csrf_token %}
+                                     {{ addform|crispy }}     
+                              <div class="form-group">
+                                    <button class="btn btn-outline-info" type="submit">Add Book</button>
+                              </div>
+                        </form>
+                  </div>   
+              </div>
+         </div>
+       </div>
+   </div>
+{% endblock %}

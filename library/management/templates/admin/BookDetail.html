@@ -1,0 +1,36 @@
+{% extends 'admin/header.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+ <div class = "container">
+ <center>
+  <a href="{% url 'BookViewAndSearch' %}" class="btn btn-primary mt-2">Back</a>
+
+</cenetr>
+
+  <div class="row justify-content-center">
+      <div class="col-md-8">
+          <div class="card m-5 p-2" style="width: 25rem;">
+          <center>
+              <img src="{{ eachbook.book_cover.url }}" class="card-img-top" alt="..." height="200" width="50">
+          </cenetr>
+              <div class="card-body">
+                  <label>Book Title*</label>
+                <h4 style="font-size: 17px;" class="card-title mt-1">{{ eachbook.book_title }}</h4>
+                <label>Isbn*</label>
+                <h4 style="font-size: 17px;" class="card-title mt-1">{{ eachbook.isbn }}</h4>
+                <label>Book Author*</label>
+                <h4 style="color: rgb(16, 52, 107)" class="card-subtitle mt-1">{{ eachbook.book_author }}</h4>
+                <label>Book Publisher*</label>
+                <h4 style="color: rgb(16, 52, 107)" class="card-subtitle mt-1">{{ eachbook.book_publisher }}</h4>
+                <label>Book Quantity*</label>
+                <h4 style="color: rgb(16, 52, 107)" class="card-subtitle mt-1">{{ eachbook.book_quantity }}</h4>
+                  <p style="font-size: 13px;" class="btn btn-warning"><b>{{ eachbook.book_category }}</b></p>
+                  <hr>
+                  <p style="font-size: 13px;" class="cart-text mt-1">added - {{ eachbook.created_at }}</p>
+                  <a href="{% url 'DeleteBook' eachbook.id %}" class="btn btn-danger m-1"> Delete </a>
+                  <a href="{% url 'updatebook' eachbook.id %}" class="btn btn-primary m-1"> Update </a>
+              </div>
+          </div>
+     </div>
+{% endblock %}

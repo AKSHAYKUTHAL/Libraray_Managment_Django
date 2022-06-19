@@ -1,0 +1,98 @@
+
+body{
+    background-image:url("/static/image/hdbook.jpg");
+    background-position:center;
+    background-size:cover;
+    text-align: center;
+
+}
+
+.container {
+    padding: 110px;
+}
+
+.card{
+    background-color:rgb(8, 129, 119);
+}
+
+
+::placeholder { 
+    color: #e76f6f!important;
+    opacity: 20;
+    font-size:18px!important;
+}
+.login-form {
+    background-color: rgba(49, 38, 38, 0.55);
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#1b1919;
+    border-width: 5px;
+    color:white;
+    box-shadow:0 1px 0 #cfcfcf;
+}
+.form-control{
+    background:transparent!important;
+    color:rgb(248, 244, 244)!important;
+    font-size: 18px!important;
+}
+.form-place{
+    background:transparent!important;
+    color:rgb(12, 11, 11)!important;
+    font-size: 18px!important;
+}
+h1{
+    color:white!important;
+}
+h3{
+    color:blanchedalmond!important;
+}
+
+h4 { 
+ border:0 solid rgb(247, 240, 240); 
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.form-control {
+    color: blue;
+    border-radius: 10px;
+}
+.text-white{
+    color: rgb(0, 0, 0)!important;
+}
+.wrapper {
+    text-align: center;
+}
+
+table, td, th{
+	border:1px solid;
+	margin:2px;
+	padding:2px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.box{
+    height: auto;
+    width: auto;
+    background: #F0F0F0;
+    margin: auto;
+}
+
+
+
+
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+
+
+
+
+
+

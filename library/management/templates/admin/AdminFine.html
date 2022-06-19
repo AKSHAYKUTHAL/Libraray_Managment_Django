@@ -1,0 +1,24 @@
+{% extends 'admin/header.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+<h1>Fine Details</h1>
+<div class="container-lg" style="padding-left: 0px">
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+               <td>Sr.no</td>
+               <td>Late Days</td>
+               <td>Fine</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{1}}.</td>
+                <td>{{ late }}</td>
+                <td>{{ fine }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

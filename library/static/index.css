@@ -1,0 +1,21 @@
+body{
+    background-image:url("/static/image/homepage.jpg");
+    background-position:center;
+    background-size:cover;
+    text-align: center;
+
+}
+.flex-container{
+    display: flex;
+    justify-content: center;
+  
+    }
+.card{
+      background:rgb(131, 92, 131);
+      float: left;
+      margin: 15px;
+      box-sizing: border-box;
+      overflow: hidden;
+      border-radius: 10px;
+      align-items: center;
+  }

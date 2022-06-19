@@ -1,0 +1,38 @@
+{% extends 'student/studentheader.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'student.css' %}">
+<h1>Book Search</h1>
+{% if books %}
+    
+    <table class="table table-hover table-dark">
+       <thead>
+            <tr>
+            <th>Book ID</th>
+            <th>Book Title</th>
+            <th>Book Author</th>
+            <th>Book Publisher</th>
+            <th>Book Quantity</th>
+            <th>Book Category</th>
+            <th>Book Created_At</th>
+            </tr>
+       </thead>
+    
+       <tbody>
+          {% for addbook in books %}
+            <tr>
+                <td>{{ forloop.counter}}.</td>
+                <td>{{ addbook.book_title }}</td>
+                <td>{{ addbook.book_author }}</td>
+                <td>{{ addbook.book_publisher }}</td>
+                <td>{{ addbook.book_quantity }}</td>
+                <td>{{ addbook.book_category }}</td>
+                <td>{{ addbook.created_at }}</td>
+            </tr>
+          {% endfor %} 
+      </tbody>
+    </table> 
+  {% else %}
+     <p> Searched books are not available...</p>
+  {% endif %}
+{% endblock %}

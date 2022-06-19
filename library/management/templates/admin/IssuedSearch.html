@@ -1,0 +1,58 @@
+{% extends 'admin/header.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+
+<h1> Search Results </h1>
+ {% if  items %}
+            <table class="table table-hover table-dark">
+                <thead>
+                <tr>
+        
+                    <th scope="col">Student Name </th>
+                    <th scope="col">Enrollment</th>
+                    <th scope="col">Book Title</th>
+                    <th scope="col">Date Issued</th>
+                    <th scope="col">Date Return</th>
+                    <th scope="col">Fine</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for t in  items %}
+                    <tr>
+                        <td>{{ t.0 }}</td>
+                        <td>{{ t.1 }}</td>
+                        <td>{{ t.2 }}</td>
+                        <td>{{ t.3 }}</td>
+                        <td>{{ t.4 }}</td>
+                        <td>{{ t.5 }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item"><a class="page-link" href="?pg=1"><<</a></li>
+                    {% if items.has_previous %}
+                        <li class="page-item"><a class="page-link"
+                          href="?pg={{items.previous_page_number }}">{{ items.previous_page_number }}</a>
+                        </li>
+                    {% endif %}
+                    <li class="page-item"><a class="page-link"
+                             href="?pg={{ items.number }}">{{ items.number }}</a></li>
+                    {% if items.has_next %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="?pg={{ items.next_page_number }}">{{items.next_page_number }}</a>
+                        </li>
+                    {% endif %}
+                    <li class="page-item"><a class="page-link" href="?pg={{ items.paginator.num_pages }}">>></a>
+                    </li>
+                </ul>
+            </nav>
+        {% else %}
+            <h4>Nothing Found</h4>
+            <p>Issue books if table is empty</p>
+        {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'admin/header.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+<div class="container">
+   <div class="row justify-content-center">
+       <div class="col-md-8">
+           <div class= "card">
+               <div class="card-body">
+                   <div class="col-sm">
+                      {% if messages %}
+                         {% for message in messages %}
+                           <div class="alert alert-{{ message.tags }}">
+                                 {{ message }} {{ studentprofile.user }}
+                            </div>
+                         {% endfor %}
+                     {% endif %}
+                   </div>
+                     <center>
+                         <h1 style="background-color:black;color:white">Issue Book</h1>
+                         <table>
+                             <tr>
+                                 <td>
+                                    <form method="post" action="">
+                                      {% csrf_token %}
+                                      <h5 align="center" style="margin-top:30px">Enrollment No & Student Name</h5>
+                                      <select  name="enroll" style="color:black;width:400px;height:35px;border-radius:4px">
+                                        {% for i in studentprofile %}
+                                           <option value="{{i.enrollment}}">{{i.user.username}}[{{i.enrollment}}] </option>
+                                           <script>
+                                           </script>
+                                        {% endfor %}
+                                      </select>
+                                      <h5 align="center"  style="margin-top:30px">Book Title</h5>
+                                      <select style="color:black;width:400px;height:35px;border-radius:4px" name="book">
+                                        {% for i in book %}
+                                           <option value="{{i.book_title}}">({{forloop.counter}}). {{i.book_title}}</option>
+                                        {% endfor %}
+                                      </select><br>
+                                      <br>
+                                      <br> 
+                                      <center> 
+                                       <div class="form-group">
+                                          <button class="btn btn-outline-info" type="submit">Issue Book</button>
+                                       </div>
+                                      </center>
+                                    </form>
+                                 </td>
+                             </tr>
+                        </table>
+                     </center>
+               </div>   
+           </div>
+       </div>
+   </div>
+</div>
+{% endblock %}
